@@ -9,6 +9,7 @@ function init() {
   initWaitlist();
   initAnimations();
   initCarousel();
+  initSpotlight();
 }
 
 document.addEventListener('DOMContentLoaded', init);

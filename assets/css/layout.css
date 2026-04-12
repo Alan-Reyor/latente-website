@@ -771,6 +771,114 @@
 }
 
 /* ----------------------------------------------------------
+   WAITLIST — Lantern spotlight backdrop
+---------------------------------------------------------- */
+
+/* Section becomes a dark stage */
+#waitlist {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-obsidiana);
+  color: var(--color-hueso);
+}
+
+#waitlist .stamp,
+#waitlist .waitlist__headline {
+  color: var(--color-hueso);
+}
+
+#waitlist .divider {
+  background-color: var(--color-barro);
+  opacity: 0.4;
+}
+
+#waitlist .waitlist__sub,
+#waitlist .waitlist__note {
+  color: var(--color-niebla);
+  opacity: 0.7;
+}
+
+#waitlist .form-label {
+  color: var(--color-niebla);
+  opacity: 0.6;
+}
+
+#waitlist .form-input {
+  color: var(--color-hueso);
+  border-color: rgba(240, 230, 211, 0.25);
+}
+
+#waitlist .form-input::placeholder {
+  color: rgba(240, 230, 211, 0.3);
+}
+
+#waitlist .form-input:focus {
+  border-color: var(--color-arena);
+}
+
+/* Backdrop container — sits behind all content */
+.waitlist__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Photographic layer — always behind the canvas */
+.waitlist__backdrop-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/boque con niebla.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Breathing loop — active on touch/mobile where spotlight doesn't run */
+  animation: waitlist-breathe 5s ease-in-out infinite;
+}
+
+@keyframes waitlist-breathe {
+  0%, 100% { opacity: 0.06; }
+  50%       { opacity: 0.15; }
+}
+
+/* Desktop (hover-capable): spotlight handles reveal, no breathing needed */
+@media (hover: hover) {
+  .waitlist__backdrop-img {
+    animation: none;
+  }
+}
+
+/*
+  Canvas injected by JS — opacity: 0.92 so 8% of the image
+  bleeds through even where the canvas is solid (the ghost).
+  Erased areas (spotlight/trail) are fully transparent → image at 100%.
+*/
+.waitlist__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.92;
+  display: block;
+}
+
+/* Content sits above the backdrop */
+#waitlist .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Reduced motion: no canvas, no breathing — static ghost only */
+@media (prefers-reduced-motion: reduce) {
+  .waitlist__canvas {
+    display: none;
+  }
+  .waitlist__backdrop-img {
+    animation: none;
+    opacity: 0.08;
+  }
+}
+
+/* ----------------------------------------------------------
    FOOTER — detail
 ---------------------------------------------------------- */
 .footer__inner {

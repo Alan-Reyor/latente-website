@@ -306,6 +306,12 @@
       id="waitlist"
       aria-labelledby="waitlist-heading"
     >
+      <!-- Lantern spotlight backdrop -->
+      <div class="waitlist__backdrop" aria-hidden="true">
+        <div class="waitlist__backdrop-img"></div>
+        <!-- JS injects <canvas class="waitlist__canvas"> here -->
+      </div>
+
       <div class="container container--sm" data-reveal-stagger>
 
         <p class="stamp manifesto__eyebrow" data-i18n="waitlist.eyebrow" data-reveal>Lista de espera</p>
@@ -440,6 +446,7 @@
   <script defer src="assets/js/modules/waitlist.js"></script>
   <script defer src="assets/js/modules/animations.js"></script>
   <script defer src="assets/js/modules/carousel.js"></script>
+  <script defer src="assets/js/modules/spotlight.js"></script>
   <script defer src="assets/js/modules/i18n.js"></script>
   <script defer src="assets/js/main.js"></script>
 </body>
