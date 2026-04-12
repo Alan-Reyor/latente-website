@@ -14,11 +14,20 @@ async function handleFormSubmit(event) {
   event.preventDefault();
 
   const form = event.currentTarget;
-  const emailInput = form.querySelector('[data-waitlist-email]');
-  const submitBtn = form.querySelector('[data-waitlist-submit]');
+  const nameInput     = form.querySelector('[data-waitlist-name]');
+  const lastnameInput = form.querySelector('[data-waitlist-lastname]');
+  const emailInput    = form.querySelector('[data-waitlist-email]');
+  const submitBtn     = form.querySelector('[data-waitlist-submit]');
+
+  if (!nameInput || !nameInput.value.trim()) {
+    showFormMessage(form, getTranslation('form.error.name'), 'error');
+    nameInput?.focus();
+    return;
+  }
 
   if (!emailInput || !validateEmail(emailInput.value)) {
     showFormMessage(form, getTranslation('form.error.email'), 'error');
+    emailInput?.focus();
     return;
   }
 
@@ -29,7 +38,11 @@ async function handleFormSubmit(event) {
     const response = await fetch('/api/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailInput.value.trim() }),
+      body: JSON.stringify({
+        firstName: nameInput.value.trim(),
+        lastName:  lastnameInput ? lastnameInput.value.trim() : '',
+        email:     emailInput.value.trim(),
+      }),
     });
 
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
