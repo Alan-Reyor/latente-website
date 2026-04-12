@@ -828,7 +828,7 @@
 .waitlist__backdrop-img {
   position: absolute;
   inset: 0;
-  background-image: url('../images/boque con niebla.jpg');
+  background-image: url('../images/boque%20con%20niebla.jpg');
   background-size: cover;
   background-position: center;
   /* Breathing loop — active on touch/mobile where spotlight doesn't run */
@@ -836,8 +836,8 @@
 }
 
 @keyframes waitlist-breathe {
-  0%, 100% { opacity: 0.06; }
-  50%       { opacity: 0.15; }
+  0%, 100% { opacity: 0.10; }
+  50%       { opacity: 0.28; }
 }
 
 /* Desktop (hover-capable): spotlight handles reveal, no breathing needed */

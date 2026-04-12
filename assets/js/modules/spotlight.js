@@ -14,6 +14,10 @@ function initSpotlight() {
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  // Touch/mobile devices have no mouse — skip canvas so the CSS
+  // breathing animation on .waitlist__backdrop-img runs unobstructed
+  if (!window.matchMedia('(hover: hover)').matches) return;
+
   // ── Canvas setup ──────────────────────────────────────────
   const canvas = document.createElement('canvas');
   canvas.className = 'waitlist__canvas';
