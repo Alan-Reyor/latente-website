@@ -1,0 +1,346 @@
+/* ============================================================
+   LATENTE — Components
+   Reusable UI components: buttons, cards, forms, badges, etc.
+   All values reference variables.css — never hardcode.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   BUTTONS
+---------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base),
+              transform var(--transition-fast);
+  min-height: 44px;
+  min-width: 44px;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Primary — Arena on Obsidiana */
+.btn--primary {
+  background-color: var(--color-arena);
+  color: var(--color-obsidiana);
+  border-color: var(--color-arena);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-barro);
+  border-color: var(--color-barro);
+}
+
+/* Ghost — outline only */
+.btn--ghost {
+  background-color: transparent;
+  border-color: var(--color-arena);
+  color: var(--color-arena);
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-arena);
+  color: var(--color-obsidiana);
+}
+
+/* Ghost inverse — for dark backgrounds */
+.btn--ghost-inverse {
+  background-color: transparent;
+  border-color: var(--color-hueso);
+  color: var(--color-hueso);
+}
+
+.btn--ghost-inverse:hover {
+  background-color: var(--color-hueso);
+  color: var(--color-obsidiana);
+}
+
+/* CTA — Mar for primary actions */
+.btn--cta {
+  background-color: var(--color-mar);
+  color: var(--color-hueso);
+  border-color: var(--color-mar);
+}
+
+.btn--cta:hover {
+  background-color: var(--color-corriente);
+  border-color: var(--color-corriente);
+}
+
+/* Size modifiers */
+.btn--sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-xs);
+  min-height: 36px;
+}
+
+.btn--lg {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--text-base);
+}
+
+/* ----------------------------------------------------------
+   CARDS
+---------------------------------------------------------- */
+.card {
+  background-color: var(--color-hueso);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card--dark {
+  background-color: var(--color-tierra);
+  color: var(--color-hueso);
+}
+
+.card__body {
+  padding: var(--space-lg);
+}
+
+.card__label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-arena);
+  margin-bottom: var(--space-sm);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-md);
+}
+
+.card__text {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  opacity: 0.8;
+}
+
+/* ----------------------------------------------------------
+   FORMS
+---------------------------------------------------------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-barro);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background-color: transparent;
+  border: var(--border-thin) solid var(--color-barro);
+  border-radius: var(--radius-sm);
+  color: var(--color-obsidiana);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  transition: border-color var(--transition-base);
+  min-height: 44px;
+}
+
+.form-input::placeholder {
+  color: var(--color-barro);
+  opacity: 0.6;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-arena);
+}
+
+.form-input--error {
+  border-color: var(--color-corriente);
+}
+
+.form-message {
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+}
+
+.form-message--error {
+  color: var(--color-mar);
+}
+
+.form-message--success {
+  color: var(--color-musgo);
+}
+
+/* ----------------------------------------------------------
+   BADGE / TAG
+---------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.badge--tierra {
+  background-color: var(--color-tierra);
+  color: var(--color-hueso);
+}
+
+.badge--bosque {
+  background-color: var(--color-bosque);
+  color: var(--color-niebla);
+}
+
+.badge--agua {
+  background-color: var(--color-mar);
+  color: var(--color-espuma);
+}
+
+.badge--montaña {
+  background-color: var(--color-cumbre);
+  color: var(--color-alba);
+}
+
+/* ----------------------------------------------------------
+   DIVIDER
+---------------------------------------------------------- */
+.divider {
+  width: 40px;
+  height: var(--border-thin);
+  background-color: var(--color-arena);
+  border: none;
+  margin: var(--space-lg) 0;
+}
+
+.divider--full {
+  width: 100%;
+}
+
+/* ----------------------------------------------------------
+   ELEMENT CARD — dark variant for Experiences section
+   Used on .section--dark (Bosque background)
+---------------------------------------------------------- */
+.card--element {
+  background: rgba(10, 26, 15, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--color-niebla);
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.1);
+  transition: border-color var(--transition-base),
+              transform var(--transition-slow),
+              background var(--transition-base);
+}
+
+.card--element:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(10, 26, 15, 0.6);
+  transform: translateY(-4px);
+}
+
+.card--element .card__label {
+  color: var(--color-brote);
+}
+
+.card--element .card__title {
+  color: var(--color-niebla);
+}
+
+.card--element .card__text {
+  color: var(--color-niebla);
+  opacity: 0.75;
+}
+
+.card__location {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-musgo);
+  margin-bottom: var(--space-md);
+}
+
+.card--element .card__location {
+  color: var(--color-brote);
+  opacity: 0.7;
+}
+
+.card__duration {
+  margin-top: var(--space-lg);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-musgo);
+  opacity: 0.6;
+}
+
+.card--element .card__duration {
+  color: var(--color-niebla);
+  opacity: 0.4;
+}
+
+/* ----------------------------------------------------------
+   REVEAL — scroll-triggered fade-up
+   JS (IntersectionObserver) adds .is-revealed when the
+   element enters the viewport. Stagger delay is driven by
+   --stagger-index, written per-element by animations.js.
+---------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity  var(--duration-reveal) var(--ease-reveal),
+    transform var(--duration-reveal) var(--ease-reveal);
+  transition-delay: calc(var(--stagger-index, 0) * var(--stagger-base));
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Waitlist headline — adds a subtle scale for the "exhale" landing */
+.waitlist__headline[data-reveal] {
+  transform: translateY(32px) scale(0.97);
+}
+
+.waitlist__headline[data-reveal].is-revealed {
+  transform: translateY(0) scale(1);
+}
+
+/* Reduced motion — content is always visible, no movement */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
