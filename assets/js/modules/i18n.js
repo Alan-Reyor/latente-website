@@ -19,7 +19,7 @@ const translations = {
     // Hero
     'hero.stamp':    'Monterrey · México',
     'hero.headline': '<span class="hero__line">Aquí</span><span class="hero__line">empieza</span><span class="hero__line">el regreso.</span>',
-    'hero.sub':      'Algunas cosas no se optimizan.<br>Se sienten.',
+    'hero.sub':      'Lo que eres sigue ahí. Latente.',
     'hero.cta':      'Únete a la lista',
 
     // Manifesto
