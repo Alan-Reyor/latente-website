@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Latente — Espacios y experiencias holísticas en la naturaleza. Retiros, talleres y experiencias de agua en Monterrey, México.">
+  <meta name="description" content="Latente — Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza. Monterrey, México.">
   <title>Latente — Espacios para recordar quién eres</title>
   <!-- Fonts -->
   <link rel="preload" href="assets/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,7 +17,7 @@
 <body>
 
   <!-- ============================================================
-       NAVIGATION
+       NAVIGATION (hidden while hero is visible)
   ============================================================ -->
   <nav class="nav" data-nav aria-label="Navegación principal">
     <div class="container nav__inner flex flex--between">
@@ -75,148 +75,272 @@
 
 
     <!-- ========================================================
-         HERO
+         S1 — HERO
     ======================================================== -->
-    <section class="hero" aria-labelledby="hero-heading" data-hero-carousel>
+    <section class="hero" id="inicio" aria-labelledby="hero-heading" data-hero>
 
-      <!-- Carousel background slides -->
-      <div class="hero__slides" aria-hidden="true">
-        <div class="hero__slide hero__slide--active" style="background-image: url('assets/images/playa diagonal.jpg')"></div>
-        <div class="hero__slide" style="background-image: url('assets/images/montañas capas.jpg')"></div>
-        <div class="hero__slide" style="background-image: url('assets/images/Bahía.jpg')"></div>
-        <div class="hero__slide" style="background-image: url('assets/images/boque con niebla.jpg')"></div>
-        <div class="hero__slide" style="background-image: url('assets/images/atardecer playa.jpg')"></div>
-      </div>
+      <!-- Single static background -->
+      <div
+        class="hero__bg"
+        style="background-image: url('assets/images/montañas capas.jpg')"
+        aria-hidden="true"
+      ></div>
 
       <!-- Dark overlay -->
       <div class="hero__overlay" aria-hidden="true"></div>
 
-      <!-- Carousel dots -->
-      <div class="hero__dots" role="tablist" aria-label="Diapositivas del hero">
-        <button class="hero__dot hero__dot--active" role="tab" aria-selected="true" aria-label="Diapositiva 1" data-slide="0"></button>
-        <button class="hero__dot" role="tab" aria-selected="false" aria-label="Diapositiva 2" data-slide="1"></button>
-        <button class="hero__dot" role="tab" aria-selected="false" aria-label="Diapositiva 3" data-slide="2"></button>
-        <button class="hero__dot" role="tab" aria-selected="false" aria-label="Diapositiva 4" data-slide="3"></button>
-        <button class="hero__dot" role="tab" aria-selected="false" aria-label="Diapositiva 5" data-slide="4"></button>
-      </div>
+      <!-- Wordmark — top center -->
+      <p class="hero__logo" aria-hidden="true">Latente</p>
 
-      <div class="container hero__inner">
-
-        <p class="stamp hero__stamp" aria-hidden="true" data-i18n="hero.stamp">Monterrey · México</p>
-
+      <!-- Centered content -->
+      <div class="hero__inner">
         <h1 id="hero-heading" class="hero__headline" data-i18n-html="hero.headline">
           <span class="hero__line">Aquí</span>
           <span class="hero__line">empieza</span>
           <span class="hero__line">el regreso.</span>
         </h1>
-
-        <p class="hero__sub" data-i18n-html="hero.sub">
+        <p class="hero__sub" data-i18n="hero.sub">
           Lo que eres sigue ahí. Latente.
         </p>
-
-        <div class="hero__cta">
-          <a href="#waitlist" class="btn btn--primary btn--lg" data-i18n="hero.cta">
-            Únete a la lista
-          </a>
-        </div>
-
       </div>
+
+      <!-- Pill navigation — bottom center -->
+      <nav class="hero__pill-nav" aria-label="Accesos directos">
+        <a href="#experiencias" class="hero__pill-link" data-i18n="nav.experiences">Experiencias</a>
+        <span class="hero__pill-sep" aria-hidden="true">·</span>
+        <a href="#nosotros" class="hero__pill-link" data-i18n="nav.about">Nosotros</a>
+        <span class="hero__pill-sep" aria-hidden="true">·</span>
+        <a href="#waitlist" class="hero__pill-link" data-i18n="nav.join">Únete</a>
+      </nav>
+
     </section>
 
 
     <!-- ========================================================
-         MANIFESTO
+         S2 — MOMENTS  (infinite marquee)
+    ======================================================== -->
+    <section class="moments" id="momentos" aria-labelledby="moments-heading">
+
+      <div class="container">
+        <h2
+          id="moments-heading"
+          class="moments__headline"
+          data-i18n="moments.headline"
+          data-reveal
+        >
+          Hay lugares y momentos que te devuelven algo...
+        </h2>
+      </div>
+
+      <!-- Marquee strip -->
+      <div class="moments__strip-wrapper" aria-label="Galería de momentos">
+        <div class="moments__strip" aria-hidden="true">
+
+          <!-- Set 1 -->
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/cabo amplio.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.1">Un horizonte sin prisa.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/boque con niebla.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.2">Un silencio al amanecer.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/Cascada Salto.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.3">Una caminata larga.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/atardecer playa.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.4">Un momento donde el tiempo se detiene.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/agave victoria.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.5">Un regreso a lo simple.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/chipinque.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.6">Una conversación que no pasaba hace años.</p>
+            </div>
+          </div>
+
+          <!-- Set 2 — duplicate for seamless loop -->
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/cabo amplio.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.1">Un horizonte sin prisa.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/boque con niebla.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.2">Un silencio al amanecer.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/Cascada Salto.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.3">Una caminata larga.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/atardecer playa.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.4">Un momento donde el tiempo se detiene.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/agave victoria.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.5">Un regreso a lo simple.</p>
+            </div>
+          </div>
+
+          <div class="vintage-frame">
+            <div class="vintage-frame__img-wrap">
+              <img class="vintage-frame__img" src="assets/images/chipinque.jpg" alt="">
+              <p class="vintage-frame__caption" data-i18n="moments.6">Una conversación que no pasaba hace años.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================================
+         S3 — PROMISE
     ======================================================== -->
     <section
-      class="section section--lg"
+      class="section section--promise"
       id="nosotros"
-      aria-labelledby="manifesto-heading"
+      aria-labelledby="promise-heading"
     >
-      <div class="container manifesto__layout">
+      <div class="container container--md">
+        <div class="promise__content" data-reveal-stagger>
 
-        <!-- Left: text -->
-        <div class="manifesto__text" data-reveal-stagger>
-
-          <p class="stamp manifesto__eyebrow" data-i18n="manifesto.eyebrow" data-reveal>Manifiesto</p>
-          <hr class="divider" aria-hidden="true">
-
-          <h2 id="manifesto-heading" class="manifesto__headline" data-i18n-html="manifesto.headline" data-reveal>
-            Llevas años construyendo.<br>
-            ¿Cuándo fue la última vez<br>
-            que supiste quién eres?
+          <h2
+            id="promise-heading"
+            class="promise__headline"
+            data-i18n="promise.headline"
+            data-reveal
+          >
+            Construimos los espacios que crean las condiciones para que algo
+            internamente se acomode.
           </h2>
 
-          <p class="manifesto__body" data-i18n="manifesto.body1" data-reveal>
-            Latente existe para ese momento. No somos un spa. No somos terapia.
-            No somos otra marca de bienestar que te vende paz en una botella.
+          <div class="promise__secondary" data-reveal>
+            <p data-i18n="promise.sub1">
+              Te vas a ir sabiendo algo de ti que no sabías al llegar.
+            </p>
+            <p data-i18n="promise.sub2">
+              Es lo único que prometemos.
+            </p>
+          </div>
+
+          <p class="promise__brand" data-i18n="promise.brand" data-reveal>
+            Eso es Latente.
           </p>
 
-          <p class="manifesto__body" data-i18n="manifesto.body2" data-reveal>
-            Somos espacios deliberados — en la sierra, en el bosque, en el agua —
-            donde lo que siempre has sabido de ti vuelve a la superficie.
-          </p>
-
-          <p class="manifesto__body" data-reveal>
-            <em data-i18n="manifesto.body3">Saldrás sabiendo algo de ti que no traías al entrar.</em>
+          <p class="promise__body" data-i18n="promise.body" data-reveal>
+            Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza,
+            con la comunidad y con el silencio que hace falta para volver a oírte.
           </p>
 
         </div>
-
-        <!-- Right: graphic -->
-        <div class="manifesto__graphic-wrap" data-manifesto-graphic aria-hidden="true">
-          <svg
-            class="manifesto__graphic"
-            viewBox="0 0 1440 1080"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <!-- Líneas detrás de la mujer (primero en el DOM = debajo) -->
-
-            <!-- Despierto — izq, pegado al texto -->
-            <g class="manifesto__item" data-seq="1">
-              <path class="manifesto__line" d="M 578 505 C 545 540 488 470 458 498" />
-              <text class="manifesto__word" x="100" y="555">Despierto</text>
-            </g>
-
-            <!-- Completo — der-arriba, arco suave -->
-            <g class="manifesto__item" data-seq="2">
-              <path class="manifesto__line" d="M 722 352 C 755 308 908 258 932 186" />
-              <text class="manifesto__word" x="932" y="183">Completo</text>
-            </g>
-
-            <!-- Presente — der, texto con separación -->
-            <g class="manifesto__item" data-seq="3">
-              <path class="manifesto__line" d="M 742 545 C 788 565 888 500 928 518" />
-              <text class="manifesto__word" x="988" y="515">Presente</text>
-            </g>
-
-            <!-- Libre — izq, S-curve -->
-            <g class="manifesto__item" data-seq="4">
-              <path class="manifesto__line" d="M 570 788 C 532 815 378 728 308 758" />
-              <text class="manifesto__word" x="108" y="775">Libre</text>
-            </g>
-
-            <!-- Latente — línea larga para separar palabra -->
-            <g class="manifesto__item" data-seq="5">
-              <path class="manifesto__line" d="M 742 922 C 808 958 978 872 1020 902" />
-              <text class="manifesto__word manifesto__word--brand" x="1020" y="900">Latente</text>
-            </g>
-
-            <!-- Mujer al frente (último en el DOM = encima de las líneas) -->
-            <image
-              class="manifesto__figure"
-              href="assets/images/Mujer PNG.png"
-              x="0" y="0" width="1440" height="1080"
-              preserveAspectRatio="xMidYMid meet"
-            />
-          </svg>
-        </div>
-
       </div>
     </section>
 
 
     <!-- ========================================================
-         EXPERIENCES
+         S4 — DUALITY  (experience + nature)
+    ======================================================== -->
+    <section
+      class="section section--duality"
+      aria-label="La experiencia y la naturaleza"
+    >
+      <div class="container container--full">
+        <div class="duality__layout">
+
+          <!-- Left column: Experience -->
+          <div class="duality__col duality__col--left" data-reveal-stagger>
+            <p class="duality__eyebrow stamp" data-i18n="duality.exp.eyebrow" data-reveal>
+              La experiencia
+            </p>
+            <h3 class="duality__headline" data-i18n="duality.exp.headline" data-reveal>
+              El contenido es un plus. La experiencia es lo que se queda.
+            </h3>
+            <p class="duality__body" data-i18n="duality.exp.body" data-reveal>
+              Vas a tener la información, las prácticas, las herramientas, las
+              ideas para llevarte. Pero lo más importante para nosotros es que
+              te lleves una experiencia viva, de las que se vuelven a sentir cada
+              vez que las recuerdas.
+            </p>
+            <p class="duality__accent" data-i18n="duality.exp.accent" data-reveal>
+              Lo que hacemos es ponerte en un lugar, con un grupo, con una
+              estructura diseñada, y dejar que ahí pase lo que tenga que pasar.
+            </p>
+          </div>
+
+          <!-- Center: Circle image -->
+          <div class="duality__circle-wrap" aria-hidden="true">
+            <div class="duality__circle">
+              <img
+                src="assets/images/ombligo del mundo.jpg"
+                alt=""
+                loading="lazy"
+              >
+            </div>
+          </div>
+
+          <!-- Right column: Nature -->
+          <div class="duality__col duality__col--right" data-reveal-stagger>
+            <p class="duality__eyebrow stamp" data-i18n="duality.nat.eyebrow" data-reveal>
+              La naturaleza
+            </p>
+            <h3 class="duality__headline" data-i18n="duality.nat.headline" data-reveal>
+              Es co-facilitadora.
+            </h3>
+            <p class="duality__body" data-i18n="duality.nat.body" data-reveal>
+              Hace el trabajo que nosotros no podemos hacer: bajarte la velocidad,
+              sacarte de la pantalla, regresarte al cuerpo.
+            </p>
+            <ul class="duality__nature-list" data-reveal>
+              <li>A soltar.</li>
+              <li>A fluir.</li>
+              <li>A quedarse quieto cuando todo pide moverse.</li>
+              <li>A rendirse sin perder.</li>
+              <li>A escuchar lo que no se dice.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         S5 — EXPERIENCES  (glassmorphism cards — unchanged)
     ======================================================== -->
     <section
       class="section section--dark section--lg"
@@ -225,45 +349,48 @@
     >
       <div class="container">
 
-        <p class="stamp experiences__eyebrow" data-i18n="experiences.eyebrow" data-reveal>Lo que creamos</p>
+        <p class="stamp experiences__eyebrow" data-i18n="experiences.eyebrow" data-reveal>
+          Los espacios que creamos
+        </p>
         <hr class="divider" aria-hidden="true">
-        <h2 id="experiencias-heading" class="experiences__heading" data-i18n="experiences.heading" data-reveal>
+        <h2
+          id="experiencias-heading"
+          class="experiences__heading"
+          data-i18n="experiences.heading"
+          data-reveal
+        >
           Experiencias
         </h2>
 
         <div class="grid grid--4" role="list" data-reveal-stagger>
 
-          <!-- Workshops -->
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
-              <span class="badge badge--tierra card__label" data-i18n="card.workshop.label">Workshop</span>
+              <span class="badge badge--tierra card__label" data-i18n="card.workshop.label">Taller</span>
               <h3 class="card__title" data-i18n="card.workshop.title">Talleres</h3>
-              <p class="card__location" data-i18n="card.workshop.group">Grupos de 10–25 personas</p>
+              <p class="card__location" data-i18n="card.workshop.group">Grupos de 10 a 25 personas</p>
               <p class="card__text" data-i18n="card.workshop.text">
-                Un día de práctica real. El contenido no es el destino —
-                es el punto de partida. Para equipos, comunidades, o cualquiera
-                que quiera ir más hondo.
+                Un día para bajar el ritmo y entrar en algo más hondo.
+                Trabajamos un tema, una práctica, una conversación.
               </p>
-              <p class="card__duration" data-i18n="card.workshop.duration">Medio día · Un día completo</p>
+              <p class="card__duration" data-i18n="card.workshop.duration">Medio día o día completo</p>
             </div>
           </article>
 
-          <!-- Retiros -->
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
               <span class="badge badge--bosque card__label" data-i18n="card.retiro.label">Retiro</span>
               <h3 class="card__title" data-i18n="card.retiro.title">Retiros Inmersivos</h3>
-              <p class="card__location" data-i18n="card.retiro.group">Grupos de 8–16 personas</p>
+              <p class="card__location" data-i18n="card.retiro.group">Grupos de 8 a 16 personas</p>
               <p class="card__text" data-i18n="card.retiro.text">
-                Dos o tres días fuera del ruido. En la sierra, el bosque, o cerca
-                del agua. Diseñamos la experiencia completa — el lugar, el ritmo,
-                lo que pasa adentro.
+                Dos o tres días fuera del ruido. Diseñamos la experiencia
+                completa: el lugar, el ritmo, lo que pasa adentro y lo que
+                pasa entre quienes están ahí.
               </p>
-              <p class="card__duration" data-i18n="card.retiro.duration">2–4 noches</p>
+              <p class="card__duration" data-i18n="card.retiro.duration">De 2 a 4 noches</p>
             </div>
           </article>
 
-          <!-- Eventos -->
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
               <span class="badge badge--agua card__label" data-i18n="card.evento.label">Evento</span>
@@ -271,22 +398,22 @@
               <p class="card__location" data-i18n="card.evento.group">Escala flexible</p>
               <p class="card__text" data-i18n="card.evento.text">
                 Para marcas, comunidades o proyectos que quieren crear algo que
-                se recuerde. Producimos experiencias donde el ambiente y el
-                contenido trabajan juntos.
+                se recuerde. Producimos experiencias donde el ambiente, el
+                contenido y la gente trabajan juntos.
               </p>
-              <p class="card__duration" data-i18n="card.evento.duration">Un día · Fin de semana</p>
+              <p class="card__duration" data-i18n="card.evento.duration">Un día o fin de semana</p>
             </div>
           </article>
 
-          <!-- Colaboraciones -->
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
               <span class="badge badge--montaña card__label" data-i18n="card.colab.label">Colaboración</span>
               <h3 class="card__title" data-i18n="card.colab.title">Colaboraciones</h3>
               <p class="card__location" data-i18n="card.colab.group">Por proyecto</p>
               <p class="card__text" data-i18n="card.colab.text">
-                Trabajamos con espacios, marcas y creadores que comparten nuestra
-                visión. Si tienes un lugar, una audiencia, o una idea — hablemos.
+                Trabajamos con espacios, marcas y creadores que comparten
+                nuestra visión. Si tienes un lugar, una audiencia o una idea,
+                hablemos.
               </p>
               <p class="card__duration" data-i18n="card.colab.duration">Formato abierto</p>
             </div>
@@ -298,7 +425,81 @@
 
 
     <!-- ========================================================
-         WAITLIST
+         S6 — PARA TI  (editorial split — numbered statements)
+    ======================================================== -->
+    <section
+      class="section section--para-ti"
+      id="para-ti"
+      aria-labelledby="parati-heading"
+    >
+      <div class="para-ti__layout">
+
+        <!-- Left: title + numbered statements -->
+        <div class="para-ti__left" data-reveal-stagger>
+
+          <h2
+            id="parati-heading"
+            class="para-ti__title"
+            data-i18n="parati.title"
+            data-reveal
+          >
+            Para ti si…
+          </h2>
+
+          <ul class="para-ti__list" data-reveal-stagger>
+
+            <li class="para-ti__item" data-reveal>
+              <span class="para-ti__num" aria-hidden="true">01</span>
+              <p class="para-ti__bullet" data-i18n="parati.bullet1">
+                Sabes que tu rendimiento no depende de cuánto te exiges, sino
+                de qué tan bien te conoces.
+              </p>
+            </li>
+
+            <li class="para-ti__item" data-reveal>
+              <span class="para-ti__num" aria-hidden="true">02</span>
+              <p class="para-ti__bullet" data-i18n="parati.bullet2">
+                Que el desgaste no es prueba de compromiso. Que llegar lejos
+                y llegar pleno es la única meta que vale la pena.
+              </p>
+            </li>
+
+            <li class="para-ti__item" data-reveal>
+              <span class="para-ti__num" aria-hidden="true">03</span>
+              <p class="para-ti__bullet" data-i18n="parati.bullet3">
+                No estás buscando tu mejor versión porque ya tienes una muy
+                buena, lo que buscas es sostenerla.
+              </p>
+            </li>
+
+            <li class="para-ti__item" data-reveal>
+              <span class="para-ti__num" aria-hidden="true">04</span>
+              <p class="para-ti__bullet" data-i18n="parati.bullet4">
+                Estás en un momento donde lo siguiente no se construye haciendo
+                más, sino volviendo a ti.
+              </p>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- Right: full-bleed headshot -->
+        <div class="para-ti__right" aria-hidden="true" data-reveal>
+          <img
+            class="para-ti__headshot"
+            src="assets/images/para-ti-headshot.png"
+            alt=""
+            loading="lazy"
+          >
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         S7 — WAITLIST  (spotlight form — unchanged)
     ======================================================== -->
     <section
       class="section section--lg"
@@ -313,16 +514,24 @@
 
       <div class="container container--sm" data-reveal-stagger>
 
-        <p class="stamp manifesto__eyebrow" data-i18n="waitlist.eyebrow" data-reveal>Lista de espera</p>
+        <p class="stamp manifesto__eyebrow" data-i18n="waitlist.eyebrow" data-reveal>
+          Lista de espera
+        </p>
         <hr class="divider" aria-hidden="true">
 
-        <h2 id="waitlist-heading" class="waitlist__headline" data-i18n-html="waitlist.headline" data-reveal>
-          Algo se está<br>formando.
+        <h2
+          id="waitlist-heading"
+          class="waitlist__headline"
+          data-i18n-html="waitlist.headline"
+          data-reveal
+        >
+          Estamos abriendo<br>los primeros espacios.
         </h2>
 
         <p class="waitlist__sub" data-i18n="waitlist.sub" data-reveal>
-          Sé el primero en saber cuándo abrimos. Sin spam. Sin urgencia artificial.
-          Solo lo que importa, cuando importa.
+          Chicos por diseño. Cuidados por pasión. Déjanos tu correo para
+          avisarte antes que a nadie cuando se abran lugares, porque no van
+          a ser muchos.
         </p>
 
         <form
@@ -406,9 +615,24 @@
         </form>
 
         <p class="waitlist__note" data-i18n="waitlist.note" data-reveal>
-          Escribimos cuando importa. Sin ruido.
+          Sin spam. Sin urgencia artificial. Solo lo que importa, cuando importa.
         </p>
 
+      </div>
+    </section>
+
+
+    <!-- ========================================================
+         S8 — CLOSING
+    ======================================================== -->
+    <section class="section section--closing" aria-label="Mensaje final">
+      <div class="container container--sm">
+        <div class="closing__text" data-reveal-stagger>
+          <span class="closing__line" data-i18n="closing.line1" data-reveal>No te perdiste.</span>
+          <span class="closing__line" data-i18n="closing.line2" data-reveal>Solo dejaste de escucharte.</span>
+          <span class="closing__line" data-i18n="closing.line3" data-reveal>Quédate lo suficientemente quieto</span>
+          <span class="closing__line" data-i18n="closing.line4" data-reveal>para volver a oírte.</span>
+        </div>
       </div>
     </section>
 
@@ -444,7 +668,6 @@
   <script defer src="assets/js/modules/navigation.js"></script>
   <script defer src="assets/js/modules/waitlist.js"></script>
   <script defer src="assets/js/modules/animations.js"></script>
-  <script defer src="assets/js/modules/carousel.js"></script>
   <script defer src="assets/js/modules/spotlight.js"></script>
   <script defer src="assets/js/modules/i18n.js"></script>
   <script defer src="assets/js/main.js"></script>

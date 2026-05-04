@@ -6,7 +6,24 @@
       "Bash(npm install:*)",
       "Bash(npx remotion:*)",
       "Bash(npx tsc:*)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "Bash(screencapture -x /tmp/latente_review.png)",
+      "Bash(osascript -e 'tell application \"Safari\" to activate')",
+      "Bash(screencapture -x /tmp/latente_hero.png)",
+      "Bash(osascript)",
+      "Bash(screencapture -x /tmp/latente_moments.png)",
+      "Bash(screencapture -x /tmp/latente_test.png)",
+      "Bash(screencapture -x /tmp/latente_full.png)",
+      "Bash(screencapture -x /tmp/site1.png)",
+      "Bash(screencapture -x /tmp/site_hero.png)",
+      "Bash(osascript -e 'tell application \"System Events\" to key code 121')",
+      "Bash(screencapture -x /tmp/site_moments.png)",
+      "Bash(osascript -e 'tell application \"Safari\" to open location \"http://localhost:8765\"')",
+      "Bash(screencapture -x /tmp/site_live.png)",
+      "Bash(screencapture -x /tmp/s1.png)",
+      "Bash(screencapture -x /tmp/s2.png)",
+      "Bash(osascript -e 'tell application \"Google Chrome\" to activate')",
+      "Bash(python3 *)"
     ]
   }
 }

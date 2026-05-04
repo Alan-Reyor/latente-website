@@ -1,15 +1,38 @@
 /* ============================================================
    LATENTE — navigation.js
-   Handles nav behavior: mobile menu toggle, scroll state,
-   active link tracking.
+   Handles nav behavior: hero-visibility, mobile menu, scroll state.
    ============================================================ */
 
 function initNavigation() {
   const nav = document.querySelector('[data-nav]');
   if (!nav) return;
 
+  handleHeroVisibility(nav);
   handleScrollState(nav);
   handleMobileMenu(nav);
+}
+
+function handleHeroVisibility(nav) {
+  const hero = document.querySelector('[data-hero]');
+  if (!hero) return;
+
+  // Start hidden — hero is visible
+  nav.classList.add('nav--hidden');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          nav.classList.add('nav--hidden');
+        } else {
+          nav.classList.remove('nav--hidden');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  observer.observe(hero);
 }
 
 function handleScrollState(nav) {

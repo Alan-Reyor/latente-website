@@ -29,6 +29,7 @@ body {
   font-weight: 400;
   line-height: var(--leading-normal);
   min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
