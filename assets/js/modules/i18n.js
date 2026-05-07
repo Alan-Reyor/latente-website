@@ -28,6 +28,8 @@ const translations = {
     'moments.4': 'Un momento donde el tiempo se detiene.',
     'moments.5': 'Un regreso a lo simple.',
     'moments.6': 'Una conversación que no pasaba hace años.',
+    'moments.7': 'Una orilla que te regresa al cuerpo.',
+    'moments.8': 'Un bosque que sabe esperar.',
 
     // Promise
     'promise.headline': 'Construimos los espacios que crean las condiciones para que algo internamente se acomode.',
@@ -130,6 +132,8 @@ const translations = {
     'moments.4': 'A moment where time stands still.',
     'moments.5': 'A return to simplicity.',
     'moments.6': 'A conversation that hadn\'t happened in years.',
+    'moments.7': 'A shoreline that brings you back to your body.',
+    'moments.8': 'A forest that knows how to wait.',
 
     // Promise
     'promise.headline': 'We build the spaces that create the conditions for something to settle inside.',

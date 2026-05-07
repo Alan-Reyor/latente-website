@@ -908,12 +908,22 @@
 }
 
 /* ----------------------------------------------------------
-   MOMENTS — infinite marquee
+   MOMENTS — focus carousel (3 cards per side)
+   Variable naming: near=±1, mid=±2, far=±3 (outermost visible).
+   Position 4 / -4 = off-screen slots used for teleport.
 ---------------------------------------------------------- */
+:root {
+  --carousel-center-w: 460px;
+  --carousel-near-w:   110px;
+  --carousel-mid-w:     72px;
+  --carousel-far-w:     46px;
+  --carousel-gap:       14px;
+  --carousel-h:        520px;
+}
+
 .moments {
   background-color: var(--color-hueso);
   padding-block: var(--space-2xl);
-  overflow: hidden;
 }
 
 .moments__headline {
@@ -924,43 +934,127 @@
   line-height: var(--leading-snug);
   color: var(--color-obsidiana);
   text-align: center;
-  white-space: nowrap;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
-.moments__strip-wrapper {
+.moments__stage {
+  position: relative;
+  height: var(--carousel-h);
   overflow: hidden;
-  /* Extra height for the rotation + margin-top offsets */
-  padding-block: var(--space-lg);
 }
 
-.moments__strip {
-  display: flex;
-  gap: var(--space-xl);
-  width: max-content;
-  animation: moments-marquee 40s linear infinite;
+/* ── Card positions driven by JS (data-carousel-pos) ── */
+
+.moments__card[data-carousel-pos="0"] {
+  width: var(--carousel-center-w);
+  left: calc(50% - var(--carousel-center-w) / 2);
+  opacity: 1;
+  z-index: 5;
 }
 
-.moments__strip-wrapper:hover .moments__strip {
-  animation-play-state: paused;
+.moments__card[data-carousel-pos="1"] {
+  width: var(--carousel-near-w);
+  left: calc(50% + var(--carousel-center-w) / 2 + var(--carousel-gap));
+  opacity: 0.82;
+  z-index: 4;
 }
 
-@keyframes moments-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.moments__card[data-carousel-pos="-1"] {
+  width: var(--carousel-near-w);
+  left: calc(50% - var(--carousel-center-w) / 2 - var(--carousel-gap) - var(--carousel-near-w));
+  opacity: 0.82;
+  z-index: 4;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .moments__strip {
-    animation: none;
+.moments__card[data-carousel-pos="2"] {
+  width: var(--carousel-mid-w);
+  left: calc(50% + var(--carousel-center-w) / 2 + var(--carousel-gap) + var(--carousel-near-w) + var(--carousel-gap));
+  opacity: 0.55;
+  z-index: 3;
+}
+
+.moments__card[data-carousel-pos="-2"] {
+  width: var(--carousel-mid-w);
+  left: calc(50% - var(--carousel-center-w) / 2 - var(--carousel-gap) - var(--carousel-near-w) - var(--carousel-gap) - var(--carousel-mid-w));
+  opacity: 0.55;
+  z-index: 3;
+}
+
+.moments__card[data-carousel-pos="3"] {
+  width: var(--carousel-far-w);
+  left: calc(50% + var(--carousel-center-w) / 2 + var(--carousel-gap) + var(--carousel-near-w) + var(--carousel-gap) + var(--carousel-mid-w) + var(--carousel-gap));
+  opacity: 0.35;
+  z-index: 2;
+}
+
+.moments__card[data-carousel-pos="-3"] {
+  width: var(--carousel-far-w);
+  left: calc(50% - var(--carousel-center-w) / 2 - var(--carousel-gap) - var(--carousel-near-w) - var(--carousel-gap) - var(--carousel-mid-w) - var(--carousel-gap) - var(--carousel-far-w));
+  opacity: 0.35;
+  z-index: 2;
+}
+
+/* Off-screen right — hidden slot, teleport destination when advancing */
+.moments__card[data-carousel-pos="4"] {
+  width: var(--carousel-far-w);
+  left: calc(100% + 40px);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Off-screen left — hidden slot, teleport destination when retreating */
+.moments__card[data-carousel-pos="-4"] {
+  width: var(--carousel-far-w);
+  left: calc(-40px - var(--carousel-far-w));
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
+
+/* Tablet */
+@media (max-width: 1023px) {
+  :root {
+    --carousel-center-w: 320px;
+    --carousel-near-w:    82px;
+    --carousel-mid-w:     56px;
+    --carousel-far-w:     38px;
+    --carousel-gap:       10px;
+    --carousel-h:        420px;
   }
 }
 
+/* Mobile — hide ±2 and ±3, show only center + 1 per side */
 @media (max-width: 767px) {
+  :root {
+    --carousel-center-w: 220px;
+    --carousel-near-w:    58px;
+    --carousel-mid-w:     38px;
+    --carousel-far-w:     24px;
+    --carousel-gap:        8px;
+    --carousel-h:        340px;
+  }
+
   .moments__headline {
     font-size: var(--text-xl);
     white-space: normal;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .moments__card[data-carousel-pos="-2"],
+  .moments__card[data-carousel-pos="2"],
+  .moments__card[data-carousel-pos="-3"],
+  .moments__card[data-carousel-pos="3"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moments__stage.is-initialized .moments__card {
+    transition: none !important;
   }
 }
 

@@ -117,7 +117,7 @@
 
 
     <!-- ========================================================
-         S2 — MOMENTS  (infinite marquee)
+         S2 — MOMENTS  (focus carousel)
     ======================================================== -->
     <section class="moments" id="momentos" aria-labelledby="moments-heading">
 
@@ -132,97 +132,85 @@
         </h2>
       </div>
 
-      <!-- Marquee strip -->
-      <div class="moments__strip-wrapper" aria-label="Galería de momentos">
-        <div class="moments__strip" aria-hidden="true">
+      <!-- Focus carousel -->
+      <div class="moments__stage" data-carousel aria-label="Galería de momentos">
 
-          <!-- Set 1 -->
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/cabo amplio.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.1">Un horizonte sin prisa.</p>
-            </div>
+        <button class="moments__arrow moments__arrow--prev" data-carousel-prev aria-label="Imagen anterior">
+          <svg width="24" height="56" viewBox="0 0 24 56" fill="none" aria-hidden="true">
+            <polyline points="18,4 6,28 18,52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="moments__arrow moments__arrow--next" data-carousel-next aria-label="Siguiente imagen">
+          <svg width="24" height="56" viewBox="0 0 24 56" fill="none" aria-hidden="true">
+            <polyline points="6,4 18,28 6,52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/cabo amplio.jpg" alt="Horizonte abierto al atardecer" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.1">Un horizonte sin prisa.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/boque con niebla.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.2">Un silencio al amanecer.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/boque con niebla.jpg" alt="Bosque envuelto en niebla al amanecer" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.2">Un silencio al amanecer.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/Cascada Salto.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.3">Una caminata larga.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/Cascada Salto.jpg" alt="Cascada entre piedras y selva" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.3">Una caminata larga.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/atardecer playa.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.4">Un momento donde el tiempo se detiene.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/atardecer playa.jpg" alt="Atardecer sobre el mar tranquilo" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.4">Un momento donde el tiempo se detiene.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/agave victoria.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.5">Un regreso a lo simple.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/agave victoria.jpg" alt="Agave en paisaje árido del norte" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.5">Un regreso a lo simple.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/chipinque.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.6">Una conversación que no pasaba hace años.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/chipinque.jpg" alt="Vista aérea desde el cerro al atardecer" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.6">Una conversación que no pasaba hace años.</p>
           </div>
+        </article>
 
-          <!-- Set 2 — duplicate for seamless loop -->
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/cabo amplio.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.1">Un horizonte sin prisa.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/playa diagonal.jpg" alt="Orilla del mar en perspectiva diagonal" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.7">Una orilla que te regresa al cuerpo.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/boque con niebla.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.2">Un silencio al amanecer.</p>
-            </div>
+        <article class="moments__card" data-carousel-card>
+          <div class="moments__img-wrap">
+            <img class="moments__img" src="assets/images/montaña con bosque.jpg" alt="Montaña cubierta de bosque en la sierra" loading="lazy">
+            <div class="moments__overlay" aria-hidden="true"></div>
+            <p class="moments__caption" data-i18n="moments.8">Un bosque que sabe esperar.</p>
           </div>
+        </article>
 
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/Cascada Salto.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.3">Una caminata larga.</p>
-            </div>
-          </div>
-
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/atardecer playa.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.4">Un momento donde el tiempo se detiene.</p>
-            </div>
-          </div>
-
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/agave victoria.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.5">Un regreso a lo simple.</p>
-            </div>
-          </div>
-
-          <div class="vintage-frame">
-            <div class="vintage-frame__img-wrap">
-              <img class="vintage-frame__img" src="assets/images/chipinque.jpg" alt="">
-              <p class="vintage-frame__caption" data-i18n="moments.6">Una conversación que no pasaba hace años.</p>
-            </div>
-          </div>
-
-        </div>
       </div>
 
     </section>
@@ -670,6 +658,7 @@
   <script defer src="assets/js/modules/animations.js"></script>
   <script defer src="assets/js/modules/spotlight.js"></script>
   <script defer src="assets/js/modules/i18n.js"></script>
+  <script defer src="assets/js/modules/carousel.js"></script>
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>

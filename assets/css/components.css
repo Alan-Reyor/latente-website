@@ -346,69 +346,149 @@
 }
 
 /* ----------------------------------------------------------
-   FILM FRAME — Moments marquee cards
+   FOCUS CAROUSEL — Moments cards
 ---------------------------------------------------------- */
-.vintage-frame {
-  flex: 0 0 auto;
-  align-self: flex-start;
-  width: 210px;
-  background: var(--color-obsidiana);
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 8px 32px rgba(26, 18, 8, 0.30);
-  user-select: none;
-}
-
-.vintage-frame:nth-child(odd) {
-  transform: rotate(1.4deg);
-  margin-top: var(--space-lg);
-}
-
-.vintage-frame:nth-child(even) {
-  transform: rotate(-1deg);
-  margin-top: 0;
-}
-
-.vintage-frame__img-wrap {
-  position: relative;
+.moments__card {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 3 / 4;
-  border-radius: 4px;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  user-select: none;
+  /* Transitions disabled until JS adds .is-initialized — prevents
+     layout-from-undefined flash on first paint. */
 }
 
-.vintage-frame__img {
+/* Transitions unlock once JS has placed all cards. */
+.moments__stage.is-initialized .moments__card {
+  transition:
+    left 0.7s var(--ease-hero),
+    width 0.7s var(--ease-hero),
+    opacity 0.5s ease;
+}
+
+/* Used by the teleport helper to suppress animation on a specific card. */
+.moments__card.no-transition {
+  transition: none !important;
+}
+
+.moments__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.moments__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: sepia(0.18) saturate(0.82) brightness(0.85);
   pointer-events: none;
 }
 
-/* Dark vignette overlay for text contrast */
-.vintage-frame__img-wrap::after {
-  content: '';
+/* Gradient overlay — fast out, slow in on center card */
+.moments__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.32);
+  background: linear-gradient(to top, rgba(26, 18, 8, 0.72) 0%, rgba(26, 18, 8, 0) 55%);
+  opacity: 0;
+  transition: opacity 0.18s ease;   /* instant-ish fade-out when leaving center */
   pointer-events: none;
 }
 
-.vintage-frame__caption {
+.moments__card[data-carousel-pos="0"] .moments__overlay {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.1s; /* slow fade-in with short delay when becoming center */
+}
+
+/* Caption — fast out (no delay), slow in (delayed, after card expands) */
+.moments__caption {
   position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-inline: var(--space-md);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-lg) var(--space-md) var(--space-md);
   font-family: var(--font-display);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: 700;
   font-style: italic;
   color: var(--color-hueso);
   text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   line-height: var(--leading-snug);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.15s ease, transform 0.15s ease; /* fast out when leaving center */
+  pointer-events: none;
+}
+
+.moments__card[data-carousel-pos="0"] .moments__caption {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease 0.22s, transform 0.45s var(--ease-hero) 0.22s; /* slow in */
+}
+
+/* Navigation arrows — bare chevrons, no background circle */
+.moments__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 90px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-obsidiana);
+  opacity: 0.35;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  padding: 0;
+}
+
+/* Position just outside the outermost visible card (pos ±3).
+   Uses the same variables as the card layout so it tracks automatically
+   at every breakpoint. */
+.moments__arrow--prev {
+  left: calc(
+    50%
+    - var(--carousel-center-w) / 2
+    - var(--carousel-gap) - var(--carousel-near-w)
+    - var(--carousel-gap) - var(--carousel-mid-w)
+    - var(--carousel-gap) - var(--carousel-far-w)
+    - 24px - 44px
+  );
+}
+
+.moments__arrow--next {
+  left: calc(
+    50%
+    + var(--carousel-center-w) / 2
+    + var(--carousel-gap) + var(--carousel-near-w)
+    + var(--carousel-gap) + var(--carousel-mid-w)
+    + var(--carousel-gap) + var(--carousel-far-w)
+    + 24px
+  );
+}
+
+.moments__arrow:hover {
+  opacity: 0.72;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.moments__arrow:focus-visible {
+  outline: 2px solid var(--color-arena);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .moments__arrow { height: 60px; opacity: 0.3; }
+  .moments__arrow--prev { left: 10px; }
+  .moments__arrow--next { left: auto; right: 10px; }
 }
