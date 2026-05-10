@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promise Section — Layout Options</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    color: #f0ece2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 32px 24px 60px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 40px;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .option {
+    cursor: pointer;
+    border: 2px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.15s;
+    background: #0f0f0f;
+  }
+
+  .option:hover { border-color: #c9a97a; transform: translateY(-2px); }
+  .option.selected { border-color: #c9a97a; }
+
+  .option-label {
+    padding: 12px 16px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    border-bottom: 1px solid #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .option-label span { color: #c9a97a; font-size: 10px; }
+
+  /* Each mockup is a scaled-down preview of the section */
+  .mockup {
+    height: 340px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(15,8,4,0.55) 0%, rgba(15,8,4,0.72) 100%),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=60') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+
+  .option-desc {
+    padding: 14px 16px;
+    font-size: 11.5px;
+    color: #666;
+    line-height: 1.6;
+    border-top: 1px solid #1e1e1e;
+  }
+
+  /* ── Option A: Centered Hierarchy ─────────────────────── */
+  .a-inner {
+    text-align: center;
+    max-width: 380px;
+  }
+  .a-inner .a-headline {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #f0ece2;
+    margin-bottom: 18px;
+  }
+  .a-inner .a-rule {
+    width: 32px;
+    height: 1px;
+    background: #c9a97a;
+    margin: 0 auto 16px;
+    opacity: 0.6;
+  }
+  .a-inner .a-sub {
+    font-size: 10px;
+    font-style: italic;
+    color: #c9a97a;
+    opacity: 0.85;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .a-inner .a-stamp {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: #c9a97a;
+    opacity: 0.55;
+    margin-bottom: 14px;
+  }
+  .a-inner .a-body {
+    font-size: 9px;
+    color: #a89e8c;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  /* ── Option B: Editorial Split ────────────────────────── */
+  .b-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    align-items: center;
+  }
+  .b-left .b-headline {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #f0ece2;
+  }
+  .b-right {
+    border-left: 1px solid rgba(201,169,122,0.3);
+    padding-left: 20px;
+  }
+  .b-right .b-sub {
+    font-size: 9.5px;
+    font-style: italic;
+    color: #c9a97a;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+  .b-right .b-stamp {
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    color: #c9a97a;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .b-right .b-body {
+    font-size: 9px;
+    color: #a89e8c;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  /* ── Option C: Glassmorphism Card ─────────────────────── */
+  .c-inner {
+    text-align: center;
+    max-width: 360px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .c-inner .c-headline {
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #f0ece2;
+    margin-bottom: 16px;
+  }
+  .c-inner .c-rule {
+    width: 28px;
+    height: 1px;
+    background: #c9a97a;
+    margin: 0 auto 14px;
+    opacity: 0.5;
+  }
+  .c-inner .c-sub {
+    font-size: 9px;
+    font-style: italic;
+    color: #c9a97a;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+  .c-inner .c-stamp {
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    color: #c9a97a;
+    opacity: 0.45;
+    margin-bottom: 12px;
+  }
+  .c-inner .c-body {
+    font-size: 8.5px;
+    color: #a89e8c;
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+
+  .select-btn {
+    display: block;
+    width: calc(100% - 32px);
+    margin: 12px 16px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .select-btn:hover { border-color: #c9a97a; color: #c9a97a; }
+  .option.selected .select-btn { border-color: #c9a97a; color: #c9a97a; background: rgba(201,169,122,0.08); }
+</style>
+</head>
+<body>
+
+<h1>Promise Section — Layout Options</h1>
+<p class="subtitle">Click an option to select it</p>
+
+<div class="options">
+
+  <!-- OPTION A -->
+  <div class="option" id="opt-a" onclick="select('a')">
+    <div class="option-label">A — Centered Hierarchy <span>Recommended</span></div>
+    <div class="mockup">
+      <div class="a-inner">
+        <div class="a-headline">Construimos los espacios que crean las condiciones para que algo internamente se acomode.</div>
+        <div class="a-rule"></div>
+        <div class="a-sub">Te vas a ir sabiendo algo de ti que no sabías al llegar.<br>Es lo único que prometemos.</div>
+        <div class="a-stamp">— Eso es Latente —</div>
+        <div class="a-body">Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza, con la comunidad y con el silencio que hace falta para volver a oírte.</div>
+      </div>
+    </div>
+    <div class="option-desc">Clean, centered. Headline dominates, secondary text flows beneath. Simple and elegant — lets the photo breathe. Classic luxury editorial feel.</div>
+    <button class="select-btn" onclick="event.stopPropagation(); select('a')">Select A</button>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="option" id="opt-b" onclick="select('b')">
+    <div class="option-label">B — Editorial Split <span></span></div>
+    <div class="mockup">
+      <div class="b-inner">
+        <div class="b-left">
+          <div class="b-headline">Construimos los espacios que crean las condiciones para que algo internamente se acomode.</div>
+        </div>
+        <div class="b-right">
+          <div class="b-sub">Te vas a ir sabiendo algo de ti que no sabías al llegar. Es lo único que prometemos.</div>
+          <div class="b-stamp">— Eso es Latente —</div>
+          <div class="b-body">Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza, con la comunidad y con el silencio que hace falta para volver a oírte.</div>
+        </div>
+      </div>
+    </div>
+    <div class="option-desc">Two-column editorial split. Headline on left, supporting text on right separated by a subtle gold line. Feels like a high-end magazine spread.</div>
+    <button class="select-btn" onclick="event.stopPropagation(); select('b')">Select B</button>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="option" id="opt-c" onclick="select('c')">
+    <div class="option-label">C — Glassmorphism Card <span></span></div>
+    <div class="mockup">
+      <div class="c-inner">
+        <div class="c-headline">Construimos los espacios que crean las condiciones para que algo internamente se acomode.</div>
+        <div class="c-rule"></div>
+        <div class="c-sub">Te vas a ir sabiendo algo de ti que no sabías al llegar.<br>Es lo único que prometemos.</div>
+        <div class="c-stamp">— Eso es Latente —</div>
+        <div class="c-body">Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza, con la comunidad y con el silencio que hace falta para volver a oírte.</div>
+      </div>
+    </div>
+    <div class="option-desc">Frosted glass card over the photo. Creates depth and lets the background show around it. Modern and elegant — the photo becomes a true stage.</div>
+    <button class="select-btn" onclick="event.stopPropagation(); select('c')">Select C</button>
+  </div>
+
+</div>
+
+<script>
+  let selected = null;
+  function select(id) {
+    document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+    document.getElementById('opt-' + id).classList.add('selected');
+    selected = id;
+    if (window.__companion) window.__companion.select(id);
+  }
+</script>
+</body>
+</html>

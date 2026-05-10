@@ -23,7 +23,16 @@
       "Bash(screencapture -x /tmp/s1.png)",
       "Bash(screencapture -x /tmp/s2.png)",
       "Bash(osascript -e 'tell application \"Google Chrome\" to activate')",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Skill(update-config)",
+      "Bash(git restore *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(sed -n '301,320p' assets/css/layout.css)",
+      "Bash(sed -n '1547,1600p' assets/css/layout.css)",
+      "Bash(/Users/alan.reyor/.claude/plugins/cache/claude-plugins-official/superpowers/f2cbfbefebbf/scripts/start-server.sh --project-dir \"/Volumes/Backup Plus/Claude Code Projects/latente-website\")",
+      "Bash(/Users/alan.reyor/.claude/plugins/cache/claude-plugins-official/superpowers/f2cbfbefebbf/skills/brainstorming/scripts/start-server.sh --project-dir \"/Volumes/Backup Plus/Claude Code Projects/latente-website\")"
     ]
   }
 }
