@@ -70,16 +70,17 @@
   color: var(--color-obsidiana);
 }
 
-/* CTA — Mar for primary actions */
+/* CTA — Arena on Obsidiana for primary actions */
 .btn--cta {
-  background-color: var(--color-mar);
-  color: var(--color-hueso);
-  border-color: var(--color-mar);
+  background-color: var(--color-arena);
+  color: var(--color-obsidiana);
+  border-color: var(--color-arena);
 }
 
 .btn--cta:hover {
-  background-color: var(--color-corriente);
-  border-color: var(--color-corriente);
+  background-color: var(--color-barro);
+  color: var(--color-hueso);
+  border-color: var(--color-barro);
 }
 
 /* Size modifiers */
@@ -364,9 +365,9 @@
 /* Transitions unlock once JS has placed all cards. */
 .moments__stage.is-initialized .moments__card {
   transition:
-    left 0.7s var(--ease-hero),
-    width 0.7s var(--ease-hero),
-    opacity 0.5s ease;
+    left    0.65s var(--ease-carousel),
+    width   0.65s var(--ease-carousel),
+    opacity 0.5s  ease;
 }
 
 /* Used by the teleport helper to suppress animation on a specific card. */
@@ -491,4 +492,31 @@
   .moments__arrow { height: 60px; opacity: 0.3; }
   .moments__arrow--prev { left: 10px; }
   .moments__arrow--next { left: auto; right: 10px; }
+}
+
+/* Carousel position dots */
+.moments__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.moments__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-barro);
+  opacity: 0.3;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.moments__dot.is-active {
+  opacity: 1;
+  transform: scale(1.5);
+  background-color: var(--color-arena);
 }

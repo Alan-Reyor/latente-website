@@ -17,7 +17,7 @@ function initCarousel() {
 
   let activeIndex = 0;
   let intervalId  = null;
-  const INTERVAL  = 5000;
+  const INTERVAL  = 2500;
 
   function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -54,6 +54,7 @@ function initCarousel() {
 
     activeIndex = (activeIndex + 1) % N;
     setPositions();
+    updateDots();
   }
 
   // Move carousel one step backward (left-to-right).
@@ -65,6 +66,7 @@ function initCarousel() {
 
     activeIndex = (activeIndex - 1 + N) % N;
     setPositions();
+    updateDots();
   }
 
   function startAutoPlay() {
@@ -77,8 +79,36 @@ function initCarousel() {
     intervalId = null;
   }
 
+  // Position indicator dots
+  const dotsContainer = document.querySelector('[data-carousel-dots]');
+  let dots = [];
+
+  if (dotsContainer) {
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'moments__dot';
+      dot.setAttribute('aria-label', `Imagen ${i + 1}`);
+      dot.addEventListener('click', () => {
+        stopAutoPlay();
+        activeIndex = i;
+        setPositions();
+        updateDots();
+        startAutoPlay();
+      });
+      dotsContainer.appendChild(dot);
+      dots.push(dot);
+    });
+  }
+
+  function updateDots() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === activeIndex);
+    });
+  }
+
   // Place all cards instantly (no transition yet), then unlock transitions next frame.
   setPositions();
+  updateDots();
   requestAnimationFrame(() => {
     stage.classList.add('is-initialized');
     startAutoPlay();
@@ -111,11 +141,14 @@ function initCarousel() {
       stopAutoPlay();
       activeIndex = i;
       setPositions();
+      updateDots();
       startAutoPlay();
     });
   });
 
-  // Pause auto-play while the user hovers over the stage.
+  // Pause auto-play while the user hovers or touches the stage.
   stage.addEventListener('mouseenter', stopAutoPlay);
   stage.addEventListener('mouseleave', startAutoPlay);
+  stage.addEventListener('touchstart', stopAutoPlay, { passive: true });
+  stage.addEventListener('touchend',   startAutoPlay, { passive: true });
 }

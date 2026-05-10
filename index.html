@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Latente — Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza. Monterrey, México.">
   <title>Latente — Espacios para recordar quién eres</title>
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Latente — Espacios para recordar quién eres">
+  <meta property="og:description" content="Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza. Monterrey, México.">
+  <meta property="og:image"       content="assets/images/og-preview.jpg">
+  <meta property="og:url"         content="https://latente.mx">
+  <meta property="og:locale"      content="es_MX">
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Latente — Espacios para recordar quién eres">
+  <meta name="twitter:description" content="Retiros, talleres y experiencias inmersivas diseñadas con la naturaleza. Monterrey, México.">
+  <meta name="twitter:image"       content="assets/images/og-preview.jpg">
   <!-- Fonts -->
   <link rel="preload" href="assets/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -15,6 +27,8 @@
   <link rel="stylesheet" href="assets/css/layout.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#contenido-principal">Saltar al contenido</a>
 
   <!-- ============================================================
        NAVIGATION (hidden while hero is visible)
@@ -71,7 +85,7 @@
   <!-- ============================================================
        MAIN CONTENT
   ============================================================ -->
-  <main class="main-content">
+  <main class="main-content" id="contenido-principal" tabindex="-1">
 
 
     <!-- ========================================================
@@ -213,6 +227,8 @@
 
       </div>
 
+      <div class="moments__dots" data-carousel-dots aria-hidden="true"></div>
+
     </section>
 
 
@@ -236,6 +252,8 @@
             Construimos los espacios que crean las condiciones para que algo
             internamente se acomode.
           </h2>
+
+          <hr class="promise__rule" aria-hidden="true">
 
           <div class="promise__secondary" data-reveal>
             <p data-i18n="promise.sub1">
@@ -597,7 +615,8 @@
             class="form-message"
             id="waitlist-message"
             data-waitlist-message
-            role="status"
+            role="alert"
+            aria-live="assertive"
             hidden
           ></p>
         </form>

@@ -96,6 +96,7 @@ const translations = {
     'waitlist.label.email':          'Tu correo electrónico',
     'waitlist.placeholder.email':    'tu@correo.com',
     'waitlist.cta':                  'Estoy dentro',
+    'waitlist.cta.loading':          'Enviando...',
     'waitlist.note':                 'Sin spam. Sin urgencia artificial. Solo lo que importa, cuando importa. Te escribimos cuando sea tu momento de entrar.',
 
     // Form feedback
@@ -200,6 +201,7 @@ const translations = {
     'waitlist.label.email':          'Your email address',
     'waitlist.placeholder.email':    'your@email.com',
     'waitlist.cta':                  'I want in',
+    'waitlist.cta.loading':          'Sending...',
     'waitlist.note':                 'No spam. No artificial urgency. Just what matters, when it matters. We\'ll write when it\'s your moment to enter.',
 
     // Form feedback

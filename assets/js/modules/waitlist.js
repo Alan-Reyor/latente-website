@@ -20,15 +20,21 @@ async function handleFormSubmit(event) {
   const submitBtn     = form.querySelector('[data-waitlist-submit]');
 
   if (!nameInput || !nameInput.value.trim()) {
+    nameInput?.setAttribute('aria-invalid', 'true');
     showFormMessage(form, getTranslation('form.error.name'), 'error');
     nameInput?.focus();
     return;
+  } else {
+    nameInput?.removeAttribute('aria-invalid');
   }
 
   if (!emailInput || !validateEmail(emailInput.value)) {
+    emailInput?.setAttribute('aria-invalid', 'true');
     showFormMessage(form, getTranslation('form.error.email'), 'error');
     emailInput?.focus();
     return;
+  } else {
+    emailInput?.removeAttribute('aria-invalid');
   }
 
   setLoadingState(submitBtn, true);
@@ -48,6 +54,8 @@ async function handleFormSubmit(event) {
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
     showFormMessage(form, getTranslation('form.success'), 'success');
+    nameInput?.removeAttribute('aria-invalid');
+    emailInput?.removeAttribute('aria-invalid');
     form.reset();
   } catch (error) {
     console.error('Waitlist submission failed:', error);
@@ -65,6 +73,9 @@ function setLoadingState(button, isLoading) {
   if (!button) return;
   button.disabled = isLoading;
   button.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+  button.textContent = isLoading
+    ? getTranslation('waitlist.cta.loading')
+    : getTranslation('waitlist.cta');
 }
 
 function showFormMessage(form, message, type) {

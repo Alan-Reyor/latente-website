@@ -54,19 +54,38 @@ function handleMobileMenu(nav) {
 
   if (!toggle || !menu) return;
 
+  function closeMenu() {
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('nav--open');
+  }
+
   toggle.addEventListener('click', () => {
     const isOpen = menu.getAttribute('aria-hidden') === 'false';
-    menu.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
-    toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-    nav.classList.toggle('nav--open', !isOpen);
+    if (isOpen) {
+      closeMenu();
+    } else {
+      menu.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      nav.classList.add('nav--open');
+    }
   });
 
   // Close on outside click
   document.addEventListener('click', (event) => {
-    if (!nav.contains(event.target)) {
-      menu.setAttribute('aria-hidden', 'true');
-      toggle.setAttribute('aria-expanded', 'false');
-      nav.classList.remove('nav--open');
+    if (!nav.contains(event.target)) closeMenu();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu.getAttribute('aria-hidden') === 'false') {
+      closeMenu();
+      toggle.focus();
     }
+  });
+
+  // Close when a nav link is clicked
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 }

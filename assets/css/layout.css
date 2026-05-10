@@ -267,6 +267,10 @@
   color: rgba(240, 230, 211, 0.85);
   white-space: nowrap;
   transition: color var(--transition-base);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-block: var(--space-sm);
 }
 
 .hero__pill-link:hover {
@@ -1059,18 +1063,62 @@
 }
 
 /* ----------------------------------------------------------
-   PROMISE — dark cinematic
+   PROMISE — dark cinematic with radial warmth
 ---------------------------------------------------------- */
 .section--promise {
   background-color: var(--color-obsidiana);
-  padding-block: var(--space-3xl);
+  background: radial-gradient(
+    ellipse 80% 65% at 50% 50%,
+    var(--color-tierra) 0%,
+    var(--color-obsidiana) 100%
+  );
+  padding-block: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--promise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    var(--color-barro) 0%,
+    transparent 65%
+  );
+  animation: promise-breathe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.section--promise .container {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes promise-breathe {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section--promise::before {
+    animation: none;
+    opacity: 0.5;
+    transform: scale(1);
+  }
 }
 
 .promise__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2xl);
+  gap: var(--space-lg);
   text-align: center;
 }
 
@@ -1082,12 +1130,22 @@
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-snug);
   max-width: 22ch;
+  margin-bottom: var(--space-sm);
+}
+
+.promise__rule {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-arena);
+  border: none;
+  opacity: 0.5;
+  margin: 0;
 }
 
 .promise__secondary {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
 }
 
 .promise__secondary p {
@@ -1101,10 +1159,10 @@
 
 .promise__brand {
   font-family: var(--font-display);
-  font-size: var(--text-4xl);
+  font-size: var(--text-3xl);
   font-weight: 200;
   color: var(--color-arena);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
 }
 
@@ -1121,7 +1179,7 @@
     font-size: var(--text-2xl);
   }
   .promise__brand {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
   }
 }
 
@@ -1143,7 +1201,29 @@
 @media (min-width: 1024px) {
   .duality__layout {
     grid-template-columns: 1fr 400px 1fr;
-    gap: var(--space-xl);
+    gap: 0;
+  }
+
+  /* shape-outside floats: concave inner edges mirroring the circle's arc.
+     With gap:0 the circle column sits flush against each text column.
+     width:48px → ~56px indent at the equator (48px + 8px margin), tapering
+     to near-zero at the top and bottom where the circle is narrow. */
+  .duality__col--left::before {
+    content: '';
+    float: right;
+    width: 48px;
+    height: 400px;
+    shape-outside: ellipse(48px 200px at 48px 200px);
+    shape-margin: 8px;
+  }
+
+  .duality__col--right::before {
+    content: '';
+    float: left;
+    width: 48px;
+    height: 400px;
+    shape-outside: ellipse(48px 200px at 0px 200px);
+    shape-margin: 8px;
   }
 }
 
@@ -1178,11 +1258,13 @@
   display: block;
 }
 
-/* Text columns */
+/* Text columns — must be block (not flex) for shape-outside / float to work */
 .duality__col {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+  display: block;
+}
+
+.duality__col > * + * {
+  margin-top: var(--space-md);
 }
 
 .duality__col--left {
@@ -1200,7 +1282,7 @@
 }
 
 .duality__eyebrow {
-  color: var(--color-musgo);
+  color: var(--color-selva);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
@@ -1227,22 +1309,11 @@
 
 .duality__accent {
   font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 300;
+  font-size: var(--text-base);
+  font-weight: 400;
   font-style: italic;
   color: var(--color-barro);
   line-height: var(--leading-loose);
-  border-left: 2px solid var(--color-arena);
-  padding-left: var(--space-md);
-}
-
-@media (min-width: 1024px) {
-  .duality__col--left .duality__accent {
-    border-left: none;
-    border-right: 2px solid var(--color-arena);
-    padding-left: 0;
-    padding-right: var(--space-md);
-  }
 }
 
 .duality__nature-list {
