@@ -240,7 +240,8 @@
       id="nosotros"
       aria-labelledby="promise-heading"
     >
-      <div class="container container--md">
+      <div class="container container--lg">
+        <div class="promise__card">
         <div class="promise__content" data-reveal-stagger>
 
           <h2
@@ -273,6 +274,7 @@
             con la comunidad y con el silencio que hace falta para volver a oírte.
           </p>
 
+        </div>
         </div>
       </div>
     </section>
@@ -372,7 +374,6 @@
 
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
-              <span class="badge badge--tierra card__label" data-i18n="card.workshop.label">Taller</span>
               <h3 class="card__title" data-i18n="card.workshop.title">Talleres</h3>
               <p class="card__location" data-i18n="card.workshop.group">Grupos de 10 a 25 personas</p>
               <p class="card__text" data-i18n="card.workshop.text">
@@ -385,7 +386,6 @@
 
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
-              <span class="badge badge--bosque card__label" data-i18n="card.retiro.label">Retiro</span>
               <h3 class="card__title" data-i18n="card.retiro.title">Retiros Inmersivos</h3>
               <p class="card__location" data-i18n="card.retiro.group">Grupos de 8 a 16 personas</p>
               <p class="card__text" data-i18n="card.retiro.text">
@@ -399,7 +399,6 @@
 
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
-              <span class="badge badge--agua card__label" data-i18n="card.evento.label">Evento</span>
               <h3 class="card__title" data-i18n="card.evento.title">Experiencias y Eventos</h3>
               <p class="card__location" data-i18n="card.evento.group">Escala flexible</p>
               <p class="card__text" data-i18n="card.evento.text">
@@ -413,7 +412,6 @@
 
           <article class="card card--element" role="listitem" data-reveal>
             <div class="card__body">
-              <span class="badge badge--montaña card__label" data-i18n="card.colab.label">Colaboración</span>
               <h3 class="card__title" data-i18n="card.colab.title">Colaboraciones</h3>
               <p class="card__location" data-i18n="card.colab.group">Por proyecto</p>
               <p class="card__text" data-i18n="card.colab.text">
@@ -635,10 +633,12 @@
     <section class="section section--closing" aria-label="Mensaje final">
       <div class="container container--sm">
         <div class="closing__text" data-reveal-stagger>
-          <span class="closing__line" data-i18n="closing.line1" data-reveal>No te perdiste.</span>
-          <span class="closing__line" data-i18n="closing.line2" data-reveal>Solo dejaste de escucharte.</span>
-          <span class="closing__line" data-i18n="closing.line3" data-reveal>Quédate lo suficientemente quieto</span>
-          <span class="closing__line" data-i18n="closing.line4" data-reveal>para volver a oírte.</span>
+          <p class="closing__line" data-reveal>
+            <span data-i18n="closing.line1">No te perdiste.</span> <span data-i18n="closing.line2">Solo dejaste de escucharte.</span>
+          </p>
+          <p class="closing__line" data-reveal>
+            <span data-i18n="closing.line3">Quédate lo suficientemente quieto</span> <span data-i18n="closing.line4">para volver a oírte.</span>
+          </p>
         </div>
       </div>
     </section>
