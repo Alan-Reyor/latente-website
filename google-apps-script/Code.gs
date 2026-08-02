@@ -32,6 +32,7 @@ const TEMPLATES = {
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
+    Logger.log('Incoming data: %s', JSON.stringify(data));
 
     // Bots fill hidden fields. Silently succeed without doing anything real.
     if (data.honeypot) {
@@ -47,12 +48,15 @@ function doPost(e) {
       return jsonResponse({ ok: false, error: 'validation' });
     }
 
+    Logger.log('Remaining daily email quota: %s', MailApp.getRemainingDailyQuota());
+
     appendRow(firstName, lastName, email, lang);
     sendNotification(firstName, lastName, email, lang);
     sendConfirmation(firstName, email, lang);
 
     return jsonResponse({ ok: true });
   } catch (err) {
+    Logger.log('doPost error: %s', err.toString());
     return jsonResponse({ ok: false, error: 'server' });
   }
 }
@@ -79,7 +83,9 @@ function sendNotification(firstName, lastName, email, lang) {
 
 function sendConfirmation(firstName, email, lang) {
   const t = TEMPLATES[lang];
+  Logger.log('Sending confirmation to: "%s" (lang=%s)', email, lang);
   MailApp.sendEmail(email, t.confirmSubject, t.confirmBody(firstName));
+  Logger.log('Confirmation MailApp.sendEmail call returned without throwing for: "%s"', email);
 }
 
 function jsonResponse(obj) {
