@@ -3,6 +3,8 @@
    Handles waitlist form submission and feedback states.
    ============================================================ */
 
+const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxUeqcfvCSxohcl2x3wi8nvGag0DOakyHkWhfGNfhCgrJrNaOC3aQ0XGcyz9tMGwW_H/exec';
+
 function initWaitlist() {
   const form = document.querySelector('[data-waitlist-form]');
   if (!form) return;
@@ -40,18 +42,27 @@ async function handleFormSubmit(event) {
   setLoadingState(submitBtn, true);
   clearFormMessage(form);
 
+  const honeypotInput = form.querySelector('[data-waitlist-honeypot]');
+
   try {
-    const response = await fetch('/api/waitlist', {
+    const response = await fetch(WAITLIST_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      // Apps Script Web Apps don't handle CORS preflight OPTIONS requests.
+      // text/plain avoids triggering a preflight; the script still parses the body as JSON.
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({
         firstName: nameInput.value.trim(),
         lastName:  lastnameInput ? lastnameInput.value.trim() : '',
         email:     emailInput.value.trim(),
+        lang:      document.documentElement.lang || 'es',
+        honeypot:  honeypotInput ? honeypotInput.value.trim() : '',
       }),
     });
 
     if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+    const result = await response.json();
+    if (!result.ok) throw new Error(`Submission rejected: ${result.error}`);
 
     showFormMessage(form, getTranslation('form.success'), 'success');
     nameInput?.removeAttribute('aria-invalid');

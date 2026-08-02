@@ -545,6 +545,18 @@
           aria-label="Formulario de lista de espera"
           data-reveal
         >
+          <div class="form-honeypot" aria-hidden="true">
+            <label for="waitlist-company">Company</label>
+            <input
+              type="text"
+              id="waitlist-company"
+              name="company"
+              data-waitlist-honeypot
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </div>
+
           <div class="waitlist__form-row">
             <div class="form-group">
               <label class="form-label" for="waitlist-name" data-i18n="waitlist.label.name">
