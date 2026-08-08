@@ -1,2 +1,2 @@
 npm run optimize-images
-git add assets/images/
+git add assets/images/*.webp
