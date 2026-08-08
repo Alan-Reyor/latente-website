@@ -4,7 +4,8 @@
   "private": true,
   "description": "Latente website",
   "scripts": {
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.7",
