@@ -22,7 +22,7 @@ async function optimizeImage(filename) {
 
   if (!force && fs.existsSync(outputPath)) {
     console.log(`skip  ${filename} (already optimized)`);
-    return;
+    return true;
   }
 
   let inputStats;
@@ -30,7 +30,7 @@ async function optimizeImage(filename) {
     inputStats = fs.statSync(inputPath);
   } catch (err) {
     console.error(`error ${filename}: cannot read file (${err.message})`);
-    return;
+    return false;
   }
 
   try {
@@ -40,13 +40,14 @@ async function optimizeImage(filename) {
       .toFile(outputPath);
   } catch (err) {
     console.error(`error ${filename}: ${err.message}`);
-    return;
+    return false;
   }
 
   const outputStats = fs.statSync(outputPath);
   console.log(
     `done  ${filename} -> ${basename}.webp  ${formatBytes(inputStats.size)} -> ${formatBytes(outputStats.size)}`,
   );
+  return true;
 }
 
 async function main() {
@@ -60,8 +61,16 @@ async function main() {
     return;
   }
 
+  let hadFailure = false;
   for (const file of files) {
-    await optimizeImage(file);
+    const ok = await optimizeImage(file);
+    if (!ok) {
+      hadFailure = true;
+    }
+  }
+
+  if (hadFailure) {
+    process.exitCode = 1;
   }
 }
 
