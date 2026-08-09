@@ -1,0 +1,14 @@
+{
+  "name": "latente-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Latente website",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.js",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "sharp": "^0.35.3"
+  }
+}
