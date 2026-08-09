@@ -48,7 +48,7 @@
 /* Dark section — Bosque / immersive */
 .section--dark {
   background-color: var(--color-bosque);
-  background-image: url('../images/tronco humedo.jpg');
+  background-image: url('../images/tronco humedo.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -866,7 +866,7 @@
 .waitlist__backdrop-img {
   position: absolute;
   inset: 0;
-  background-image: url('../images/boque%20con%20niebla.jpg');
+  background-image: url('../images/boque%20con%20niebla.webp');
   background-size: cover;
   background-position: center;
   /* Breathing loop — active on touch/mobile where spotlight doesn't run */
@@ -1072,7 +1072,7 @@
 ---------------------------------------------------------- */
 .section--promise {
   background-color: var(--color-obsidiana);
-  background-image: url('../images/Bah%C3%ADa.jpg');
+  background-image: url('../images/Bah%C3%ADa.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1546,7 +1546,7 @@
   background-color: var(--color-obsidiana);
   background-image:
     linear-gradient(to bottom, rgba(26,18,8,0.15) 0%, rgba(26,18,8,0.5) 55%, #1a1208 100%),
-    url('../images/mountains-outline.jpg');
+    url('../images/mountains-outline.webp');
   background-size: cover;
   background-position: center center;
   padding-block: var(--space-xl);
